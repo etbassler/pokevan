@@ -9,7 +9,7 @@ export default function Home() {
   console.log(Pokemon, "pokemon");
   return (
     <main className="flex min-h-screen flex-col justify-center items-center p-24 pt-5">
-      <div className="z-10 max-w-5xl w-full flex justify-center md:justify-end mb-5">
+      <div className="z-10 max-w-5xl w-full flex justify-center mb-5">
         <Image
           src="/images/logo.png"
           alt="pok-evan-logo"
@@ -18,7 +18,7 @@ export default function Home() {
         />
       </div>
 
-      <div className="relative flex justify-center items-center w-full max-w-5xl">
+      <div className="relative flex justify-center items-center w-full max-w-5xl pt-4">
         {isLoading ? (
           <Loader />
         ) : Pokemon ? (
