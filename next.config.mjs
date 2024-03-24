@@ -4,9 +4,9 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "assets.example.com",
+        hostname: "raw.githubusercontent.com",
         port: "",
-        pathname: "/account123/**",
+        pathname: "/PokeAPI/sprites/master/sprites/pokemon/**",
       },
     ],
   },
