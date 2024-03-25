@@ -3,16 +3,18 @@ import PokeAPI, { IPokemon } from "pokeapi-typescript";
 import { useState } from "react";
 import Image from "next/image";
 import { Header } from "@/app/components/Header";
+import { useRouter } from "next/router";
 
 type PokemonProps = {
   pokemon: IPokemon;
 };
 
 export default function Pokemon({ pokemon }: PokemonProps) {
-  console.log(pokemon, "pokemon render");
   const [frontImageLoaded, setFrontImageLoaded] = useState(false);
   const [backImageLoaded, setBackImageLoaded] = useState(false);
   const [colorMode, setColorMode] = useState(false);
+
+  const router = useRouter();
 
   return (
     <>
@@ -26,7 +28,7 @@ export default function Pokemon({ pokemon }: PokemonProps) {
                 className={`absolute top-20 left-6 flex flex-col items-start`}
               >
                 <div
-                  className={` p-2 rounded-full w-5 h-5 rounded-full ${
+                  className={` p-2 rounded-full w-5 h-5 ${
                     colorMode === false
                       ? "bg-gray-800"
                       : "bg-red-600 shadow-lg shadow-red-600"
@@ -37,16 +39,22 @@ export default function Pokemon({ pokemon }: PokemonProps) {
                 </span>
               </button>
               <div
-                className={`relative bg-gbYellow p-5 sm:p-10 flex flex-col sm:flex-row justify-between items-stretch h-full  after:absolute after:content-[''] after:h-full after:w-full after:top-0 after:left-0 after:bg-gbYellow ${
+                className={`relative bg-gbYellow p-5 sm:p-10 flex flex-col sm:flex-row justify-between items-stretch h-full  after:absolute after:content-[''] after:h-full after:w-full after:top-0 after:left-0 after:bg-gbYellow after:pointer-events-none ${
                   colorMode === false ? "after:opacity-40" : "after:opacity-0"
                 }`}
               >
                 <div
-                  className={`flex flex-col sm:flex-row sm:justify-between items-stretch h-full w-full ${
+                  className={`relative flex items-stretch h-full w-full ${
                     colorMode === false && "saturate-0"
                   }`}
                 >
-                  <div className="flex flex-col ">
+                  <button
+                    onClick={() => router.back()}
+                    className={`absolute top-0 right-6 flex flex-col items-start text-gray-800 font-bold`}
+                  >
+                    Back
+                  </button>
+                  <div className="flex flex-col w-full">
                     <h1 className="text-4xl font-bold text-gray-800 capitalize">
                       {pokemon.name}
                     </h1>
@@ -73,18 +81,49 @@ export default function Pokemon({ pokemon }: PokemonProps) {
                         onLoad={() => setBackImageLoaded(true)}
                       />
                     </div>
-                  </div>
-                  <div>
-                    <h2 className="text-2xl font-semibold text-gray-800">
-                      Abilities
-                    </h2>
-                    <ul>
-                      {pokemon.abilities.map((ability) => (
-                        <li key={ability.ability.name}>
-                          {ability.ability.name}
-                        </li>
-                      ))}
-                    </ul>
+                    <div className="flex flex-col sm:flex-row sm:justify-between divide-gray-800 divide-y-2 divide-dashed gap-2 sm:divide-y-0">
+                      <div className="divide-y-2 divide-dashed divide-gray-800 flex flex-col gap-2">
+                        <div className=" font-semibold text-gray-800">
+                          <h2 className="text-2xl">Height</h2>
+                          <div>{pokemon.height}</div>
+                        </div>
+
+                        <div className="font-semibold text-gray-800">
+                          <h2 className="text-2xl">Weight</h2>
+                          <div>{pokemon.weight}</div>
+                        </div>
+                        <div className=" font-semibold text-gray-800">
+                          <h2 className="text-2xl">Types</h2>
+                          <ul>
+                            {pokemon.types.map((type) => (
+                              <li key={type.type.name}>{type.type.name}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                      <div className="divide-y-2 divide-dashed divide-gray-800 flex flex-col gap-2">
+                        <div className=" font-semibold text-gray-800 ">
+                          <h2 className="text-2xl">Abilities</h2>
+                          <ul>
+                            {pokemon.abilities.map((ability) => (
+                              <li key={ability.ability.name}>
+                                {ability.ability.name}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div className=" font-semibold text-gray-800 ">
+                          <h2 className="text-2xl">Stats</h2>
+                          <ul>
+                            {pokemon.stats.map((stat) => (
+                              <li key={stat.stat.name}>
+                                {stat.stat.name}: {stat.base_stat}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

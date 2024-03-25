@@ -9,7 +9,6 @@ export default function Home() {
 
   return (
     <>
-      {" "}
       <Header />
       <main className="flex min-h-screen flex-col justify-center items-center p-24 pt-5">
         <div className="relative flex justify-center items-center w-full max-w-5xl pt-4">

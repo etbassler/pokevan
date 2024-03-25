@@ -1,10 +1,10 @@
 export const tailwindBreakpoint = (
-  xs: string | number,
-  sm: string | number,
-  md: string | number,
-  lg: string | number,
-  xl: string | number,
-  xxl: string | number
+  xs: number,
+  sm: number,
+  md: number,
+  lg: number,
+  xl: number,
+  xxl: number
 ) => {
   const width = window.innerWidth;
   if (width >= 1536) {

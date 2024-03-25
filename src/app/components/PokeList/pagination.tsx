@@ -31,13 +31,14 @@ export const PokeListPagination = ({
   }
 
   return (
-    <nav aria-label="Page navigation example">
-      <ul className="flex items-center -space-x-px h-10 text-base w-full">
+    <nav aria-label="Page navigation example" data-testid="pokelist-pagination">
+      <ul className="flex items-center -space-x-px h-10 text-base w-full mt-5">
         <li>
           <button
-            disabled={pagination === 1}
+            data-testid="pokelist-previous"
+            disabled={pagination === 0}
             onClick={() => setPagination(pagination - 1)}
-            className="flex items-center justify-center px-4 h-10 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+            className="flex items-center justify-center px-4 h-10 ms-0 leading-tight bg-gray-700 border border-e-0 border-gray-300 rounded-s-lg hover:bg-red-600 focus:bg-red-600"
           >
             <span className="sr-only">Previous</span>
             <Image
@@ -50,25 +51,27 @@ export const PokeListPagination = ({
         </li>
 
         {generatePaginationNumbers(pagination).map((number, index) => {
-          console.log(number, "number", pagination, "pagination");
           return (
             <li key={number}>
               <button
-                onClick={() => setPagination(number)}
-                className={`${
-                  number === pagination ? "font-bold " : ""
-                }flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white`}
+                onClick={() => setPagination(number - 1)}
+                className={`relative flex items-center justify-center px-4 h-10 leading-tight  border border-gray-300 hover:bg-red-600 focus:bg-red-600 ${
+                  number === pagination + 1
+                    ? "font-bold after:bg-red-600 after:content-[''] after:w-full after:h-1/2 after:absolute hover:after:bg-white hover:animate-spin  after:top-0 text-black bg-white rounded-full overflow-hidden mx-2"
+                    : "bg-gray-700"
+                }`}
               >
-                {number}
+                <span className="block z-10">{number}</span>
               </button>
             </li>
           );
         })}
         <li>
           <button
-            disabled={pagination === paginatedGroups.length}
+            data-testid="pokelist-next"
+            disabled={pagination === paginatedGroups.length - 1}
             onClick={() => setPagination(pagination + 1)}
-            className="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+            className="flex items-center justify-center px-4 h-10 leading-tight bg-gray-700 border border-gray-300 rounded-e-lg hover:bg-red-600 focus:bg-red-600"
           >
             <span className="sr-only">Next</span>
             <Image src={"/icons/next.svg"} alt="Next" width={10} height={10} />
