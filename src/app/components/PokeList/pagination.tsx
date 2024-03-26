@@ -57,11 +57,11 @@ export const PokeListPagination = ({
                 onClick={() => setPagination(number - 1)}
                 className={`relative flex items-center justify-center px-4 h-10 leading-tight  border border-gray-300 hover:bg-red-600 focus:bg-red-600 ${
                   number === pagination + 1
-                    ? "font-bold after:bg-red-600 after:content-[''] after:w-full after:h-1/2 after:absolute hover:after:bg-white hover:animate-spin  after:top-0 text-black bg-white rounded-full overflow-hidden mx-2"
+                    ? "font-bold before:bg-white before:content-[''] before:w-1/2 before:h-1/2 before:absolute before:top-3 before:left-3 before:z-10 before:rounded-full before:border-2 after:bg-red-600 after:content-[''] after:w-full after:h-1/2 after:absolute hover:after:bg-white hover:animate-spin  after:top-0 text-black bg-white rounded-full overflow-hidden mx-2 h-12 w-12 p-0"
                     : "bg-gray-700"
                 }`}
               >
-                <span className="block z-10">{number}</span>
+                <span className="block z-20">{number}</span>
               </button>
             </li>
           );

@@ -14,10 +14,12 @@ export default function Home() {
         <div className="relative flex justify-center items-center w-full max-w-5xl pt-4">
           {isLoading ? (
             <Loader />
-          ) : Pokemon ? (
+          ) : !isError && Pokemon ? (
             <PokeList pokemon={Pokemon} />
           ) : (
-            "No Pokemon Found"
+            <div className="p-5 bg-gray-600 font-bold italic rounded-md">
+              Error: You have to catch them all first!
+            </div>
           )}
         </div>
       </main>

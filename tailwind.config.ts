@@ -7,6 +7,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      boxShadow: {
+        inside: "inset 0px -1px 13px 2px rgba(0,0,0,0.2)",
+      },
       colors: {
         normal: "#A8A878",
         fighting: "#C03028",
@@ -35,6 +38,12 @@ const config: Config = {
       },
     },
   },
+  safelist: [
+    {
+      pattern:
+        /(bg|to|via|from)-(normal|fighting|flying|poison|ground|rock|bug|ghost|steel|fire|water|grass|electric|psychic|ice|dragon|dark|fairy|unknown|shadow)/,
+    },
+  ],
   plugins: [],
 };
 export default config;
