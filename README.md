@@ -1,5 +1,7 @@
 ## Pok-Evan
 
+A directory of Pokemon
+
 ### Future Roadmap
 
 - Expanded component tests to include E2E testing for pages
