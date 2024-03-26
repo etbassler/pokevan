@@ -21,7 +21,7 @@ nvm use
 
 or make sure your computer is running Node v20.10.0
 
-2. Install dependences
+2. Install dependencies
 
 ```bash
 npm install
