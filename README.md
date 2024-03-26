@@ -12,13 +12,36 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ### Getting Started
 
-First, run the development server:
+1. Use correct version of node.
+   Node is managed using nvmrc. To confirm you are using the correct version of node, please run
+
+```bash
+nvm use
+```
+
+or make sure your computer is running Node v20.10.0
+
+2. Install dependences
+
+```bash
+npm install
+```
+
+3. Run the development server:
 
 ```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+### Testing
+
+Testing and coverage can be seen by running
+
+```bash
+npm run test
+```
 
 ### Learn More
 
