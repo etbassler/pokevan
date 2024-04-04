@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const Header = () => {
   return (
-    <div className="w-full flex justify-center">
+    <header className="w-full flex justify-center">
       <div className="z-10 max-w-5xl w-full flex justify-center py-5">
         <Link href="/" data-testid="header-link">
           <span className="sr-only">Home</span>
@@ -16,6 +16,6 @@ export const Header = () => {
           />
         </Link>
       </div>
-    </div>
+    </header>
   );
 };
