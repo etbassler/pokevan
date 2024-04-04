@@ -1,7 +1,5 @@
-import { tailwindBreakpoint } from "@/app/utilities/tailwind";
 import Image from "next/image";
 import { INamedApiResource, IPokemon } from "pokeapi-typescript";
-import { useState } from "react";
 
 type PokeListPaginationProps = {
   paginatedGroups: INamedApiResource<IPokemon>[][];
