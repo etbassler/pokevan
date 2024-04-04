@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Header } from "@/app/components/Header";
 import { useRouter } from "next/router";
 import { ContentSection } from "@/app/components/ContentSection";
+import Head from "next/head";
 
 type PokemonProps = {
   pokemon: IPokemon;
@@ -31,29 +32,42 @@ export default function Pokemon({ pokemon }: PokemonProps) {
 
   return (
     <>
+      <Head>
+        <title>Pok-Evan: {pokemon.name.toUpperCase()} Detail Page</title>
+      </Head>
       <div className="min-h-screen flex flex-col">
         <Header />
         <div className="flex items-stretch justify-center px-5 h-full grow">
-          <div className="relative bg-gray-400 pt-8 px-4 sm:pt-20 sm:px-10 w-full max-w-5xl rounded-t-lg after:absolute after:top-[15px] after:left-0 after:content-[''] after:w-full after:h-[10px] after:shadow-inside   sm:after:h-[20px] sm:after:top-[40px]">
-            <div className="relative bg-gray-600 px-20 pt-10 rounded-t-xl w-full h-full">
-              <button
-                onClick={() => setColorMode(!colorMode)}
-                className={`absolute top-20 left-6 flex flex-col items-start`}
-              >
-                <div
-                  className={` p-2 rounded-full w-5 h-5 ${
-                    colorMode === false
-                      ? "bg-gray-800"
-                      : "bg-red-600 shadow-lg shadow-red-600"
-                  }`}
-                ></div>
-                <span className="text-[10px] mt-4 uppercase">
-                  {colorMode === false ? "Original" : "Color"}
-                </span>
-              </button>
+          <div className="relative flex flex-col bg-gray-400 pt-8 px-4 sm:pt-20 sm:px-10 w-full max-w-5xl rounded-t-lg after:absolute after:top-[15px] after:left-0 after:content-[''] after:w-full after:h-[10px] after:shadow-inside   sm:after:h-[20px] sm:after:top-[40px]">
+            <div className="relative flex flex-col grow bg-gray-600 px-10 pt-5 sm:px-20 sm:pt-10 rounded-t-xl w-full h-full">
+              <div className="flex justify-between sm:justify-end pb-3 ">
+                <button
+                  onClick={() => setColorMode(!colorMode)}
+                  className={` sm:absolute top-32 left-6 flex sm:flex-col items-center sm:items-start`}
+                  aria-label="Toggle Color or Original Mode"
+                >
+                  <div
+                    className={` p-2 rounded-full w-5 h-5 ${
+                      colorMode === false
+                        ? "bg-gray-800"
+                        : "bg-red-600 shadow-lg shadow-red-600"
+                    }`}
+                  ></div>
+                  <span className="text-[10px] ml-2 sm:ml-0 sm:mt-4 uppercase ">
+                    {colorMode === false ? "Original" : "Color"}
+                  </span>
+                </button>
+                <button
+                  onClick={() => router.back()}
+                  className={`flex text-white font-bold  items-start`}
+                >
+                  Back
+                </button>
+              </div>
+
               {pokemon === null ? (
                 <div
-                  className={` bg-gbYellow  p-5 sm:p-10 flex flex-col sm:flex-row justify-between items-stretch h-full
+                  className={` bg-gbYellow p-5 sm:p-10 flex flex-col sm:flex-row justify-between items-stretch
                     `}
                 >
                   <h1 className="text-4xl font-bold text-gray-800 capitalize">
@@ -62,7 +76,7 @@ export default function Pokemon({ pokemon }: PokemonProps) {
                 </div>
               ) : (
                 <div
-                  className={`relative  p-5 sm:p-10 flex flex-col sm:flex-row justify-between items-stretch h-full  after:absolute after:content-[''] after:h-full after:w-full after:top-0 after:left-0 after:bg-gbYellow after:pointer-events-none ${
+                  className={`relative  p-5 sm:p-10 flex flex-col sm:flex-row justify-between items-stretch  after:absolute after:content-[''] after:h-full after:w-full after:top-0 after:left-0 after:bg-gbYellow after:pointer-events-none ${
                     colorMode === false
                       ? "after:opacity-40 bg-gbYellow"
                       : `after:opacity-0 ${createGradient(
@@ -75,23 +89,17 @@ export default function Pokemon({ pokemon }: PokemonProps) {
                       colorMode === false && "saturate-0"
                     }`}
                   >
-                    <button
-                      onClick={() => router.back()}
-                      className={`absolute top-0 right-6 flex flex-col items-start text-gray-800 font-bold`}
-                    >
-                      Back
-                    </button>
                     <div className="flex flex-col w-full">
-                      <h1 className="text-4xl font-bold text-gray-800 capitalize">
+                      <h1 className="text-4xl font-bold text-gray-800 capitalize break-words">
                         {pokemon.name}
                       </h1>
-                      <div className="gif-effect">
+                      <div className="gif-effect max-w-full">
                         <Image
                           src={pokemon.sprites.front_default}
                           alt={pokemon.name}
                           width={48}
                           height={48}
-                          className={`w-48 h-48 front ${
+                          className={`w-48 h-48 front max-w-full ${
                             backImageLoaded && frontImageLoaded ? "loaded" : ""
                           }`}
                           onLoad={() => setFrontImageLoaded(true)}
@@ -102,7 +110,7 @@ export default function Pokemon({ pokemon }: PokemonProps) {
                           alt={pokemon.name}
                           width={48}
                           height={48}
-                          className={`w-48 h-48 back ${
+                          className={`w-48 h-48 back max-w-full ${
                             backImageLoaded && frontImageLoaded ? "loaded" : ""
                           }`}
                           onLoad={() => setBackImageLoaded(true)}

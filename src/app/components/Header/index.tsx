@@ -11,8 +11,9 @@ export const Header = () => {
             src="/images/logo.png"
             alt="pok-evan-logo"
             width={200}
-            height={200}
+            height={54}
             data-testid="header-logo"
+            priority
           />
         </Link>
       </div>
