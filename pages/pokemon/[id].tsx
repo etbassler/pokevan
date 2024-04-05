@@ -15,7 +15,7 @@ export default function Pokemon({ pokemon }: PokemonProps) {
   return (
     <>
       <Head>
-        <title>Pok-Evan: {pokemon.name.toUpperCase()} Detail Page</title>
+        <title>Pok-Evan: {pokemon?.name.toUpperCase()} Detail Page</title>
       </Head>
       <div className="min-h-screen flex flex-col">
         <Header />

@@ -34,6 +34,7 @@ export const GameBoyWrapper = ({ pokemon, children }: GameBoyWrapperProps) => {
               onClick={() => setColorMode(!colorMode)}
               className={` sm:absolute top-32 left-6 flex sm:flex-col items-center sm:items-start`}
               aria-label="Toggle Color or Original Mode"
+              disabled={pokemon === null}
             >
               <div
                 className={` p-2 rounded-full w-5 h-5 ${
@@ -56,7 +57,7 @@ export const GameBoyWrapper = ({ pokemon, children }: GameBoyWrapperProps) => {
 
           {pokemon === null ? (
             <div
-              className={` bg-gbYellow p-5 sm:p-10 flex flex-col sm:flex-row justify-between items-stretch
+              className={` bg-gbYellow p-5 sm:p-10 flex flex-col sm:flex-row justify-between items-stretch min-h-full
             `}
             >
               <h1 className="text-4xl font-bold text-gray-800 capitalize">

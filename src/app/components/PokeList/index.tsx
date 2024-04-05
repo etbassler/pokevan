@@ -13,14 +13,14 @@ type PokeListProps = {
 export const PokeList = ({ pokemon }: PokeListProps) => {
   const [pagination, setPagination] = useState(0);
   const [displayCount, setDisplayCount] = useState(
-    tailwindBreakpoint(4, 6, 9, 12, 12, 12)
+    tailwindBreakpoint(4, 6, 6, 8, 8, 8)
   );
 
   const paginatedGroups = [];
 
   useEffect(() => {
     const handleResize = () =>
-      setDisplayCount(tailwindBreakpoint(3, 6, 9, 12, 12, 12));
+      setDisplayCount(tailwindBreakpoint(3, 6, 6, 8, 8, 8));
 
     window.addEventListener("resize", handleResize);
 
