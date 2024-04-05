@@ -1,7 +1,7 @@
 import { tailwindBreakpoint } from "@/app/utilities/tailwind";
 import Image from "next/image";
 import { INamedApiResourceList, IPokemon } from "pokeapi-typescript";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { PokeListPagination } from "./pagination";
 import { useRouter } from "next/router";
 import Link from "next/link";
@@ -12,9 +12,22 @@ type PokeListProps = {
 
 export const PokeList = ({ pokemon }: PokeListProps) => {
   const [pagination, setPagination] = useState(0);
+  const [displayCount, setDisplayCount] = useState(
+    tailwindBreakpoint(4, 6, 9, 12, 12, 12)
+  );
+
   const paginatedGroups = [];
 
-  const displayCount = tailwindBreakpoint(6, 6, 9, 12, 12, 12);
+  useEffect(() => {
+    const handleResize = () =>
+      setDisplayCount(tailwindBreakpoint(3, 6, 9, 12, 12, 12));
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   for (let i = 0; i < pokemon.results.length; i += displayCount as number) {
     paginatedGroups.push(pokemon.results.slice(i, i + displayCount));
