@@ -4,7 +4,7 @@ export const Loader = () => {
   return (
     <Image
       src="/images/pokeball.svg"
-      alt="pokeball"
+      alt="pokeball loader"
       width={100}
       height={100}
       className="animate-spin"
