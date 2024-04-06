@@ -4,10 +4,8 @@ A directory of Pokemon
 
 ### Future Roadmap
 
-- Expanded component tests to include E2E testing for pages
 - Add search and filtering functionality
 - Update error handling to include clearer messaging and paths to resolutions
-- Update list count on resize instead of only page reload
 - Add handling for dark mode and motion disabling
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
