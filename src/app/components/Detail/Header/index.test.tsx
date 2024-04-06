@@ -6,7 +6,7 @@ import { DetailHeader } from ".";
 describe("Details Header Component", () => {
   // mock useRouter
 
-  it("renders the left side of the pokemon details component", () => {
+  it("renders the details header of the pokemon details page", () => {
     render(<DetailHeader pokemon={pokemon} />);
 
     // check if the name is visible
@@ -16,5 +16,7 @@ describe("Details Header Component", () => {
     // check if the image is visible
     const images = screen.getAllByRole("img");
     expect(images).toHaveLength(2);
+    expect(images[0]).toHaveClass("front");
+    expect(images[1]).toHaveClass("back");
   });
 });

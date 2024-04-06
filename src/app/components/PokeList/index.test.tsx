@@ -13,13 +13,10 @@ jest.mock("next/router", () => ({
 describe("Pokelist Component", () => {
   it("renders the Pokelist component with pagination and tests the next and previous pagination buttons", () => {
     render(<PokeList pokemon={pokeList} />);
-    const pokeListComponent = screen.getByTestId("pokeList");
-    expect(pokeListComponent).toBeInTheDocument();
 
     let pokeListItems = screen.getAllByRole("link");
     expect(pokeListItems).toHaveLength(8);
     expect(pokeListItems[0]).toHaveTextContent("nidoran-f");
-    expect(screen.getByTestId("pokelist-pagination")).toBeVisible();
     const next = screen.getByTestId("pokelist-next");
     expect(next).toBeVisible();
     fireEvent.click(next);

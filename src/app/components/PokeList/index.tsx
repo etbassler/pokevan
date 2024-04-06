@@ -3,7 +3,6 @@ import Image from "next/image";
 import { INamedApiResourceList, IPokemon } from "pokeapi-typescript";
 import { useEffect, useState } from "react";
 import { PokeListPagination } from "./pagination";
-import { useRouter } from "next/router";
 import Link from "next/link";
 
 type PokeListProps = {
@@ -21,7 +20,6 @@ export const PokeList = ({ pokemon }: PokeListProps) => {
   useEffect(() => {
     const handleResize = () =>
       setDisplayCount(tailwindBreakpoint(3, 6, 6, 8, 8, 8));
-
     window.addEventListener("resize", handleResize);
 
     return () => {
@@ -32,8 +30,6 @@ export const PokeList = ({ pokemon }: PokeListProps) => {
   for (let i = 0; i < pokemon.results.length; i += displayCount as number) {
     paginatedGroups.push(pokemon.results.slice(i, i + displayCount));
   }
-
-  const router = useRouter();
 
   return (
     <div className="w-full">

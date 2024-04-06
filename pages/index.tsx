@@ -14,7 +14,7 @@ export default function Home() {
       </Head>
       <div className="min-h-screen">
         <Header />
-        <main className="flex flex-col justify-center items-center p-8 sm:px-24 pt-5 grow">
+        <main className="flex flex-col justify-center items-center pb-20 md:pb-8 px-8 sm:px-24 pt-5 grow">
           <div className="relative flex justify-center items-center w-full max-w-5xl pt-4">
             {isLoading ? (
               <Loader />
